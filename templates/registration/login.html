@@ -1,0 +1,123 @@
+<!-- templates/registration/login.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Patin Pro</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="{% static 'App/CSS/bootstrap.min.css' %}" />
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="{% static 'App/CSS/bootstrap-theme.min.css' %}" />
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="{% static 'App/js/bootstrap.min.js' %}" ></script>
+
+    <link rel="shortcut icon" type="image/png" href="{% static 'App/Favicon/p.png' %}"/>
+    <style>
+        body{
+          background-image: url("{% static 'App/PIC/3.jpeg' %}");
+          background-repeat: no-repeat;
+          background-size: cover;
+        }
+
+        @media only screen and (max-device-width: 760px) {
+          body {
+            background-image: url("{% static 'App/PIC/bg-sm.jpg' %}");
+            background-repeat: no-repeat;
+            background-size: cover;
+          }
+        }
+
+
+    </style>
+
+  </head>
+  <body>
+    <div class="container-fluid" >
+      <div class="page-header" style="background-color: rgba(255,255,255, 0.5);">
+        <div class="row">
+          <div class="col-md-6 col-sm-6" >
+            <h1 id="headercnt"></h1>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4 col-sm-3"></div>
+        <div class="col-md-4 col-sm-6" style="background-color: rgba(249, 242, 234, 0.6); box-shadow: 3px 3px 5px black; padding-bottom: 105px; border-radius: 15px 150px;" >
+          <center style="color: #fff; text-shadow: 2px 2px 1px black;">
+            <h1 style="font-size: 45px;">Welcome</h1>
+            <p style="font-size: 25px;">to <strong>PatinPro</strong></p>
+
+          </center>
+          <br>
+          <form method="post" class="form-inline">
+            <div class="col-md-12 col-sm-12" id="login-form">
+                {% csrf_token %}
+                <div class="form-group" style="width: 100%;">
+                  <div class="col-md-3 col-sm-3">
+                    <label for="exampleInputName2">Username:</label>
+                  </div>
+                  <div class="col-md-9 col-sm-9">
+                    <input type="text" class="form-control" id="exampleInputName2" placeholder="Username" name="username" />
+                  </div>
+                </div>
+                <br>
+                <br>
+                <div class="form-group" style="width: 100%;">
+                  <div class="col-md-3 col-sm-3">
+                    <label for="exampleInputName2">Password:</label>
+                  </div>
+                  <div class="col-md-9 col-sm-9">
+                    <input type="password" class="form-control" id="exampleInputName2" name="password" />
+                  </div>
+                </div>
+                <br>
+                <br>
+                <div class="col-md-12 col-sm-12" style="text-align: center;">
+                  <button type="submit" name="button"  class="btn btn-danger">Đăng nhập</button>
+                  <button type="button" name="button"  class="btn btn-info">Đăng ký</button>
+              </div>
+              <br>
+              <br>
+              {% if form.errors %}
+              <div class="alert alert-danger alert-dismissible fade in">
+                  <a href="#" class="close" data-dismiss="alert" aria-label="close" onclick="this.parentElement.style.display = 'none';">&times;</a>
+                  <strong>!!!</strong> Username or Password is not correct.
+              </div>
+              {% endif %}
+        </div>
+        </form>
+      </div>
+      <div class="col-md-4 col-sm-3"></div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    function loginForm(){
+      document.getElementById("login-form").style.display = "block";
+      document.getElementById("temperary").style.display = "none";
+    };
+
+    window.onload = function headerContent(){
+      var str = "Patin Pro";
+      var myCode = "";
+      var color_char = "0123456789abcdef";
+      for (i = 0; i < str.length; i++) {
+          var colCode = "";
+          colCode += color_char[Math.floor(Math.random() * 16)] + color_char[Math.floor(Math.random() * 16)] + color_char[Math.floor(Math.random() * 16)] + color_char[Math.floor(Math.random() * 16)] + color_char[Math.floor(Math.random() * 16)] + color_char[Math.floor(Math.random() * 16)];
+          myCode += "<span class='text' style='color:#" + colCode +";font-size: 190%;'>" + str[i] + "</span>";
+          delete(colCode);
+        }
+      myCode += "&nbsp;<span><small>Vietnam</small></span>";
+      document.getElementById("headercnt").innerHTML = myCode;
+    };
+
+
+
+  </script>
+  </body>
+</html>

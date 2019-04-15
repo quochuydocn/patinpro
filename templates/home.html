@@ -1,0 +1,12 @@
+<!-- templates/home.html -->
+{% load static %}
+
+{% if user.is_authenticated %}
+  <h1>Hi Do Quoc Huy!<h1>
+  <h1> You are successful</h1>
+  <a href="{% url 'logout' %}">logout</a>
+{% else %}
+  <p>You are not logged in</p>
+  <img src="{% static 'App/PIC/1.jpg' %}" alt="...">
+  <a href="{% url 'login' %}">login</a>
+{% endif %}

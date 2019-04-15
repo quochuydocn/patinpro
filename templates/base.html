@@ -1,0 +1,400 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Patin Pro</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="{% static 'App/CSS/bootstrap.min.css' %}" />
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="{% static 'App/CSS/bootstrap-theme.min.css' %}" />
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="{% static 'App/js/bootstrap.min.js' %}" ></script>
+
+    <link rel="shortcut icon" type="image/png" href="{% static 'App/Favicon/p.png' %}"/>
+    <style>
+        body{
+          background-image: url("{% static 'App/PIC/3.jpeg' %}");
+          background-repeat: no-repeat;
+          background-size: cover;
+          background-attachment: fixed;
+        }
+
+        #login-form{
+          display: none;
+        }
+
+        #test1{
+          position: relative;
+
+        }
+
+        #temperary{
+            text-align: right;
+        }
+
+        #content{
+          background: rgba(249, 242, 234, 0.6);
+          border-bottom: 1px solid #fff;
+          box-shadow: 2px 2px 5px #000;
+          margin-left: 0px;
+          margin-right: 0px;
+        }
+
+        .vien1{
+            width: 40%;
+            height: 80px;
+            position: relative;
+            background-image: url('{% static "App/PIC/topleft.png" %}');
+            background-size: contain;
+            background-repeat: no-repeat;
+            opacity: 0;
+            top: 0px;
+            left: 0px;
+        }
+
+        .vien2{
+          width: 40%;
+          height: 80px;
+          position: absolute;
+          background-image: url('{% static "App/PIC/bottomright.png" %}');
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position: bottom right;
+          opacity: 0;
+          bottom: 0px;
+          right: 0px;
+          margin-right: 15px;
+        }
+
+        .main{
+          margin: 0;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          margin-right: -50%;
+          transform: translate(-50%, -50%)
+        }
+        #test1:hover{
+          box-shadow: 1px 1px 2px #fcb045;
+          background-color: rgba(252, 201, 153, 0.1);
+          border-radius: 0 2em;
+        }
+
+        #test2:hover{
+          box-shadow: 1px 1px 2px #fcb045;
+          background-color: rgba(252, 201, 153, 0.1);
+          border-radius: 0 2em;
+        }
+
+        #test3:hover{
+          box-shadow: 1px 1px 2px #fcb045;
+          background-color: rgba(252, 201, 153, 0.1);
+          border-radius: 0 2em;
+        }
+
+        #test4:hover{
+          box-shadow: 1px 1px 2px #fcb045;
+          background-color: rgba(252, 201, 153, 0.1);
+          border-radius: 0 2em;
+        }
+
+        #test5:hover{
+          box-shadow: 1px 1px 2px #fcb045;
+          background-color: rgba(252, 201, 153, 0.1);
+          border-radius: 0 2em;
+        }
+
+
+        #test1:hover>.vien1{
+          animation: mymove1 0.2s forwards;
+
+        }
+
+        #test1:hover>.vien2{
+          animation: mymove2 0.2s forwards;
+        }
+
+        #test2:hover>.vien1{
+          animation: mymove1 0.2s forwards;
+        }
+
+        #test2:hover>.vien2{
+          animation: mymove2 0.2s forwards;
+        }
+
+        #test3:hover>.vien1{
+          animation: mymove1 0.2s forwards;
+        }
+
+        #test3:hover>.vien2{
+          animation: mymove3 0.2s forwards;
+        }
+
+        #test4:hover>.vien1{
+          animation: mymove1 0.2s forwards;
+        }
+
+        #test4:hover>.vien2{
+          animation: mymove2 0.2s forwards;
+        }
+
+        #test5:hover>.vien1{
+          animation: mymove1 0.2s forwards;
+        }
+
+        #test5:hover>.vien2{
+          animation: mymove2 0.2s forwards;
+        }
+
+        a{
+            font-size: 20px;
+            color: #fff;
+            text-shadow: 1px 1px 1px black;
+            font-weight: bold;
+        }
+
+        #test1:hover a{
+          text-decoration: none;
+          color: #104f4a;
+          padding: 100px 100px;
+          border-radius: 50% 50%;
+          background-image: url("{% static 'App/PIC/lighting.png' %}");
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: contain;
+        }
+
+        #test2:hover a{
+          text-decoration: none;
+          color: #104f4a;
+          padding: 100px 100px;
+          border-radius: 50% 50%;
+          background-image: url("{% static 'App/PIC/lighting.png' %}");
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: contain;
+        }
+
+        #test3:hover a{
+          text-decoration: none;
+          color: #104f4a;
+          padding: 100px 100px;
+          border-radius: 50% 50%;
+          background-image: url("{% static 'App/PIC/lighting.png' %}");
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: contain;
+        }
+
+        #test4:hover a{
+          text-decoration: none;
+          color: #104f4a;
+          padding: 100px 100px;
+          border-radius: 50% 50%;
+          background-image: url("{% static 'App/PIC/lighting.png' %}");
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: contain;
+        }
+
+        #test5:hover a{
+          text-decoration: none;
+          color: #104f4a;
+          padding: 100px 100px;
+          border-radius: 50% 50%;
+          background-image: url("{% static 'App/PIC/lighting.png' %}");
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: contain;
+        }
+
+        @keyframes mymove1 {
+          0%   {top: -10px; left: -10px; opacity: 0;}
+          100%  {top: 0px; left: 0px; opacity: 1;}
+        }
+
+        @keyframes mymove2 {
+          0%   {bottom: -10px; right: -10px; opacity: 0;}
+          100%  {bottom: 0px; right: 0px; opacity: 1;}
+        }
+
+        @keyframes mymove3 {
+          0%   {bottom: -10px; right: -10px; opacity: 0;}
+          100%  {bottom: 0px; right: 0px; opacity: 1;}
+        }
+
+
+        .context-dark, .bg-gray-dark, .bg-primary {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .footer-classic a, .footer-classic a:focus, .footer-classic a:active {
+            color: #ffffff;
+        }
+        .nav-list li {
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+
+        .nav-list li a:hover:before {
+            margin-left: 0;
+            opacity: 1;
+            visibility: visible;
+        }
+
+        ul, ol {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .social-inner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            padding: 23px;
+            font: 900 13px/1 "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.5);
+        }
+        .social-container .col {
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .nav-list li a:before {
+            content: "\f14f";
+            font: 400 21px/1 "Material Design Icons";
+            color: #4d6de6;
+            display: inline-block;
+            vertical-align: baseline;
+            margin-left: -28px;
+            margin-right: 7px;
+            opacity: 0;
+            visibility: hidden;
+            transition: .22s ease;
+        }
+    </style>
+
+  </head>
+  <body>
+    <div class="container-fluid" >
+      <div class="page-header" id="head" >
+        <div class="row" >
+          <div class="col-md-12 col-sm-12" >
+            <h1 id="headercnt"></h1>
+          </div>
+        </div>
+      </div>
+      <div class="row" id="content">
+        <div class="col-md-2 col-sm-2" id="test1">
+            <div class="vien1"></div>
+            <div class="main"><a href="#">Events</a></div>
+            <div class="vien2"></div>
+        </div>
+        <div class="col-md-2 col-sm-2" id="test2">
+          <div class="vien1"></div>
+          <div class="main"><a href="#" >Pictures</a></div>
+          <div class="vien2"></div>
+        </div>
+        <div class="col-md-4 col-sm-4"  id="test3">
+          <div class="vien1"></div>
+          <div class="main" ><a href="#" >HOME</a></div>
+          <div class="vien2"></div>
+        </div>
+        <div class="col-md-2 col-sm-2" id="test4">
+          <div class="vien1"></div>
+          <div class="main"><a href="{% url 'control' %}" >Control</a></div>
+          <div class="vien2"></div>
+        </div>
+        <div class="col-md-2 col-sm-2" id="test5" >
+          <div class="vien1"></div>
+          <div class="main"><a href="#">Admin</a></div>
+          <div class="vien2"></div>
+        </div>
+      </div>
+  {% block content %}
+
+  {% endblock %}
+  </div>
+  </body>
+  <footer class="section footer-classic context-dark bg-image" style="background: rgba(249, 242, 234, 0.6); color: black;">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-4 col-xl-5 col-sm-12">
+              <center>
+              <div class="pr-xl-4">
+                <a class="brand" href="index.html">
+                  <img class="brand-logo-light" src="{% static 'App/Favicon/p.png' %}" alt="" width="140" height="80" srcset="images/agency/logo-retina-inverse-280x74.png 2x">
+                </a>
+                <p>Welcome to PatinPro Vietnam - the biggest relaxing center.</p>
+                <p>Join with us and make your life healthy.</p>
+                <p>Time for smiling - let's start!!!</p>
+
+                <p class="rights"><span>©  </span><span class="copyright-year">2019</span><span> </span><span>Quoc Huy Do - PatinPro</span><span>. </span><span>All Rights Reserved.</span></p>
+              </div>
+            </center>
+            </div>
+            <div class="col-md-4 col-sm-6">
+              <h5>Contacts</h5>
+              <dl class="contact-list">
+                <dt>Address:</dt>
+                <dd>K20 An Lac Village, TrungGia Commune, SocSon district, Hanoi city.</dd>
+              </dl>
+              <dl class="contact-list">
+                <dt>Email:</dt>
+                <dd><a href="mailto:#">quochuy3456@gmail.com</a></dd>
+              </dl>
+              <dl class="contact-list">
+                <dt>Phones:</dt>
+                <dd><a href="tel:#">+84 362627928</a> <span>or</span> <a href="tel:#">+84 819520663</a>
+                </dd>
+              </dl>
+            </div>
+            <div class="col-md-4 col-xl-3 col-sm-6">
+              <h5>Links</h5>
+              <ul class="nav-list">
+                <li><a href="#">About</a></li>
+                <li><a href="#">Projects</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Contacts</a></li>
+                <li><a href="#">Pricing</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="row no-gutters social-container">
+          <div class="col-md-3 col-xl-5 col-sm-3"><a class="social-inner" href="https://www.facebook.com/QuocHuy3456"><span class="icon mdi mdi-facebook"></span><span>Facebook</span></a></div>
+          <div class="col-md-3 col-xl-5 col-sm-3"><a class="social-inner" href="#"><span class="icon mdi mdi-instagram"></span><span>instagram</span></a></div>
+          <div class="col-md-3 col-xl-5 col-sm-3" ><a class="social-inner" href="#"><span class="icon mdi mdi-twitter"></span><span>twitter</span></a></div>
+          <div class="col-md-3 col-xl-5 col-sm-3"><a class="social-inner" href="#"><span class="icon mdi mdi-youtube-play"></span><span>google</span></a></div>
+        </div>
+
+      </footer>
+<script>
+window.onload = function headerContent(){
+  var str = "Patin Pro";
+  var myCode = "";
+  var color_char = "0123456789abcdef";
+  for (i = 0; i < str.length; i++) {
+      var colCode = "";
+      colCode += color_char[Math.floor(Math.random() * 16)] + color_char[Math.floor(Math.random() * 16)] + color_char[Math.floor(Math.random() * 16)] + color_char[Math.floor(Math.random() * 16)] + color_char[Math.floor(Math.random() * 16)] + color_char[Math.floor(Math.random() * 16)];
+      myCode += "<span class='text' style='color:#" + colCode +";font-size: 190%;'>" + str[i] + "</span>";
+      delete(colCode);
+    }
+  myCode += "&nbsp;<span><small>Vietnam</small></span>";
+  document.getElementById("headercnt").innerHTML = myCode;
+
+  {% for item in listGiay %}
+  var value = {{ item.Borrow }};
+  if (value == 1){
+      document.getElementById("shoe{{item.GiayCode}}").style.opacity = 0.1;
+    };
+  {% endfor %}
+  };
+
+</script>
+</html>

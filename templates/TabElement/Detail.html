@@ -1,0 +1,97 @@
+{% extends 'base0.html' %}
+
+{% block content %}
+    <div class="row" style="padding-top: 15px;">
+      <div class="col-sm-3 col-md-3"></div>
+      <div class="col-sm-6 col-md-6" style="background-color: #fff; padding-bottom: 15px; margin-bottom: 15px; box-shadow: 3px 5px 5px black; border-radius: 10px 10px;">
+        <div >
+          <p style="margin-top: 3px;"><a href="{% url 'control' %}" class="btn btn-danger" role="button" >
+              <span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span>&nbsp;Back</a>
+            </p>
+            <div class="alert alert-success" id="notify" style="display: none;">
+              <strong>Success!</strong>
+            </div>
+            <center><img src="{{ shoe.GiayAnh.url }}" alt="Giay {{ shoe.GiayCode }}" width="170" height="200"></center>
+            <hr>
+            <div class="col-sm-9 col-md-9">
+              <center>
+                <p><strong>{{ shoe.GiayName }}</strong></p>
+              </center>
+              <p>
+                <strong>Size:</strong><span>{{shoe.GiaySize}}</span>
+              </p>
+              <p>
+                <strong>Status:</strong>
+                {% if shoe.GiayStatus %}
+                <span>{{shoe.GiayStatus}}</span>
+                {% endif %}
+              </p>
+              <p>
+                <strong>Note:</strong>
+                {% if shoe.GiayNote %}
+                  <span>{{shoe.GiayNote}}</span>
+                {% endif %}
+              </p>
+              <p>
+                <strong>Sequence: </strong>
+                {% if shoe.BorrowTimes %}
+                  <span>{{shoe.BorrowTimes}}</span>
+                {% endif %}
+              </p>
+              {% if shoe.Borrow == 1 %}
+                <p><strong>Borrowed Time: </strong><span>{{shoe.TimeBorrow}}</span></p>
+              {% else %}
+                <p><strong>Borrowed Time: </strong><span>{{shoe.TimeBorrow}}</span></p>
+                <p><strong>Return Time: </strong><span>{{shoe.TimeReturn}}</span></p>
+              {% endif %}
+
+              {% if shoe.TimeReturn and summ != 0 %}
+                <hr>
+                <p><strong>Used time: </strong><span>{{ phut }}</span></p>
+                <p><strong>Unit: </strong><span>30.000,00 /h</span></p>
+                <p><strong>Pill: </strong><span>{{summ}} VND</span></p>
+              {% endif %}
+
+            </div>
+            <div class="col-sm-3 col-md-3" style="text-align: center;">
+
+              <form method="post" onsubmit="return abc();">
+                {% csrf_token %}
+                {% if shoe.Borrow == 0 %}
+                    <button type="submit" class="btn btn-danger" >Borrow</button>
+                {% else %}
+                    <button type="submit" class="btn btn-success">Return</button>
+                {% endif %}
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3 col-md-6"></div>
+      </div>
+  </div>
+
+  <script type="text/javascript">
+
+    function abc() {
+      confirmOK = false;
+      if (confirm('Do you really want to submit the form?')){
+        document.getElementById('notify').style.display = 'block';
+        confirmOK = true;
+      }else{
+        confirmOK = false;
+      }
+
+      if (confirmOK == true) {
+        return true;
+      }else{
+        return false;
+      }
+
+    };
+
+    function loginForm(){
+      document.getElementById("login-form").style.display = "block";
+      document.getElementById("temperary").style.display = "none";
+    };
+  </script>
+{% endblock %}
